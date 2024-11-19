@@ -7,7 +7,7 @@ const updateProductPrice = document.querySelector('#update-price');
 
 // Função para buscar todos os produtos
 async function fetchProducts() {
-  const response = await fetch('http://localhost:3000/products');
+  const response = await fetch('http://3.145.32.108:3000/products');
   const products = await response.json();
 
   productList.innerHTML = '';
@@ -32,7 +32,7 @@ addProductForm.addEventListener('submit', async (event) => {
   const name = addProductForm.name.value;
   const price = parseFloat(addProductForm.price.value);
 
-  const response = await fetch('http://localhost:3000/products', {
+  const response = await fetch('http://3.145.32.108:3000/products', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ name, price }),
@@ -61,7 +61,7 @@ updateProductForm.addEventListener('submit', async (event) => {
   const name = updateProductName.value;
   const price = parseFloat(updateProductPrice.value);
 
-  const response = await fetch(`http://localhost:3000/products/${id}`, {
+  const response = await fetch(`http://3.145.32.108:3000/products/${id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ name, price }),
@@ -77,7 +77,7 @@ updateProductForm.addEventListener('submit', async (event) => {
 
 // Função para deletar um produto
 async function deleteProduct(id) {
-  const response = await fetch(`http://localhost:3000/products/${id}`, { method: 'DELETE' });
+  const response = await fetch(`http://3.145.32.108:3000/products/${id}`, { method: 'DELETE' });
 
   if (response.ok) {
     fetchProducts();
